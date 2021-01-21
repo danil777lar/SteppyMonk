@@ -44,6 +44,7 @@ public class WalkManager : MonoBehaviour
 
     private void EndStep(){
         startTime = -1f;
+        GetCurrentLeg().position = new Vector3(GetCurrentLeg().position.x, startPosition.y, GetCurrentLeg().position.z);
         CheckOpora();
     }
 
@@ -55,6 +56,12 @@ public class WalkManager : MonoBehaviour
             float duration = 1f;
             float t = (Time.time - startTime)/duration;
             GetCurrentLeg().position = Vector3.Lerp(startPosition, endPosition, t);
+
+            float xPer = (t-0.5f)*2f;
+            float y = startPosition.y + ( -(xPer*xPer)+2f );
+            GetCurrentLeg().position = new Vector3(GetCurrentLeg().position.x, y, GetCurrentLeg().position.z);
+
+            if (t > 1) EndStep();
         }
     }
 
