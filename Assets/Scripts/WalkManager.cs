@@ -85,7 +85,9 @@ public class WalkManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit)){
             if (hit.transform.tag == "Opora") Debug.Log("OK");
-            else Debug.Log("LOX");
+            else if (hit.transform.tag == "Point") {
+                hit.transform.gameObject.GetComponent<CheckPointGenerator>().Generate();
+            } else Debug.Log("LOX");
         } else Debug.Log("LOX");
     }
 

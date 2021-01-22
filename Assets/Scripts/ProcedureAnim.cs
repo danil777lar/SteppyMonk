@@ -33,6 +33,7 @@ public class ProcedureAnim : MonoBehaviour
         for (int i = segments.Length-1; i > 0; i--){
             Vector3 dir = targetPosition - segments[i].position; 
             float a = Vector2.SignedAngle(dir, Vector2.down)*-1f;
+            if (i == segments.Length-2) a = 0f;
             // if (i == 1 && a < 0) a *= -1f;
 
             // Debug.DrawLine(segments[i].position, segments[i].position);

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: White
+  m_Name: Green
   m_Shader: {fileID: -6465566751694194690, guid: d96f8d229fc56f140a662209bf521c95,
     type: 3}
   m_ShaderKeywords: 
@@ -103,7 +103,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_E6E06023: {r: 0.404, g: 0.404, b: 0.404, a: 0}
-    - Color_EB1218D3: {r: 0.56700003, g: 0.446229, b: 0.49314007, a: 0}
+    - Color_EB1218D3: {r: 0.22822474, g: 0.46226418, b: 0.20278569, a: 0}
     - _BaseColor: {r: 1, g: 0.81277317, b: 0, a: 1}
     - _Color: {r: 1, g: 0.81277317, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
