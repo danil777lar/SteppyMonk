@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WalkManager : MonoBehaviour
 {
@@ -8,23 +9,24 @@ public class WalkManager : MonoBehaviour
     public Transform leftFoot;
     public Transform rightFoot;
 
+    public GameStateManager stateManager;
+
     private int currentLeg = 0;
 
     private Vector3 startPosition;
     private float startTime = -1f;
-    
-    void Start()
-    {
-        
-    }
 
+    private float deathPoint;
+    
     void Update()
     {
         HipsToCenter();
         StepAnimation();  
 
-        if (Input.GetMouseButtonDown(0) && startTime == -1f) StartStep();
-        if (Input.GetMouseButtonUp(0) && startTime != -1f) EndStep();      
+        if (!EventSystem.current.IsPointerOverGameObject()){
+            if (Input.GetMouseButtonDown(0) && startTime == -1f) StartStep();
+            if (Input.GetMouseButtonUp(0) && startTime != -1f) EndStep();
+        }      
     }
 
     private void HipsToCenter(){
@@ -81,14 +83,26 @@ public class WalkManager : MonoBehaviour
     }
 
     private void CheckOpora(){
-        Ray ray = new Ray(GetCurrentLeg().position, Vector3.down);
+        Vector3 rayOrigin = GetCurrentLeg().position;
+        rayOrigin.y += 5f; 
+        Ray ray = new Ray(rayOrigin, Vector3.down);
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit)){
+            Debug.Log(hit);
             if (hit.transform.tag == "Opora") Debug.Log("OK");
             else if (hit.transform.tag == "Point") {
                 hit.transform.gameObject.GetComponent<CheckPointGenerator>().Generate();
-            } else Debug.Log("LOX");
-        } else Debug.Log("LOX");
+            } else GameOver();
+        } else GameOver();
+    }
+
+    private void GameOver(){
+        deathPoint = Mathf.Max(leftFoot.transform.position.x, rightFoot.transform.position.x);
+        stateManager.ChangePanel(2);
+    }
+
+    public float GetDeathPoint(){
+        return deathPoint;
     }
 
 }
