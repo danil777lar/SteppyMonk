@@ -20,6 +20,7 @@ public class ProcedureAnim : MonoBehaviour
         for (int i = 0; i < segments.Length-2; i++){
             segmentLenghts[i] = Vector3.Distance(segments[i].position, segments[i+1].position);
             fullLenght += segmentLenghts[i];
+            Debug.Log(segments[i].name);
         }
         segmentLenghts[segments.Length-2] = 0.1f;
         segmentLenghts[segments.Length-1] = 0f;
@@ -34,9 +35,14 @@ public class ProcedureAnim : MonoBehaviour
             Vector3 dir = targetPosition - segments[i].position; 
             float a = Vector2.SignedAngle(dir, Vector2.down)*-1f;
             if (i == segments.Length-2) a = 0f;
-            // if (i == 1 && a < 0) a *= -1f;
-
-            // Debug.DrawLine(segments[i].position, segments[i].position);
+            // if (i == 1){
+            //     float localRot = segments[i+1].transform.localRotation.x - a;  
+            //     if (localRot < 180f || localRot > 0){
+            //         float middledRot = (a+segments[i+1].transform.localRotation.x)/2f;
+            //         a = middledRot;
+            //         segments[i+1].localRotation =  Quaternion.Euler(a*-1f, 0f, 0f);
+            //     }
+            // } 
 
             segments[i].localRotation =  Quaternion.Euler(a*-1f, 0f, 0f);
             float dx = Mathf.Cos(Mathf.Deg2Rad*(a+270f))*segmentLenghts[i];
