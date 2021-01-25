@@ -11,6 +11,8 @@ public class WalkManager : MonoBehaviour
 
     public GameStateManager stateManager;
 
+    public float duration = 5f;
+
     private int currentLeg = 0;
 
     private Vector3 startPosition;
@@ -55,7 +57,6 @@ public class WalkManager : MonoBehaviour
             Vector3 endPosition = GetOtherLeg().position;
             endPosition.x += 10f;
             endPosition.z = GetCurrentLeg().position.z;
-            float duration = 1f;
             float t = (Time.time - startTime)/duration;
             GetCurrentLeg().position = Vector3.Lerp(startPosition, endPosition, t);
 
