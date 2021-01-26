@@ -68,12 +68,12 @@ public class WalkManager : MonoBehaviour
         }
     }
 
-    private Transform GetCurrentLeg(){
+    public Transform GetCurrentLeg(){
         if (currentLeg == 0) return leftFoot;
         else return rightFoot;
     }
 
-    private Transform GetOtherLeg(){
+    public Transform GetOtherLeg(){
         if (currentLeg == 1) return leftFoot;
             else return rightFoot;
     }
@@ -89,7 +89,6 @@ public class WalkManager : MonoBehaviour
         Ray ray = new Ray(rayOrigin, Vector3.down);
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit)){
-            Debug.Log(hit);
             if (hit.transform.tag == "Opora") Debug.Log("OK");
             else if (hit.transform.tag == "Point") {
                 hit.transform.gameObject.GetComponent<CheckPointGenerator>().Generate();

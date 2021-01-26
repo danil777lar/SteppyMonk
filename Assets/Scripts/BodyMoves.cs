@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class BodyMoves : MonoBehaviour
 {
-    public Transform leftFoot;
-    public Transform rightFoot;
+    private WalkManager walkManager;
 
-    private float standartFootHeight;
-    private float standartHipsHeight;
+    private float legLenght = 5f;
+    private float normalPoint;
 
-    void Start(){
-        standartFootHeight = leftFoot.position.y;
-        standartHipsHeight = transform.position.y;
+    void Awake(){
+        walkManager = GetComponent<WalkManager>();
+        normalPoint = transform.position.y;
     }
 
     void Update()
@@ -21,8 +20,11 @@ public class BodyMoves : MonoBehaviour
     }
 
     private void HipsStabilization(){
-        float dif = Mathf.Min(leftFoot.position.y, rightFoot.position.y) - standartFootHeight;
-        transform.position = new Vector3(transform.position.x, standartHipsHeight-dif, transform.position.z);
-        
+        Vector3 newPos = transform.position;
+        float max = Mathf.Max(walkManager.leftFoot.position.x, walkManager.rightFoot.position.x);
+        float min = Mathf.Min(walkManager.leftFoot.position.x, walkManager.rightFoot.position.x); 
+        newPos.y = normalPoint - ((max-min)/4f); 
+
+        transform.position = newPos;
     }
 }
