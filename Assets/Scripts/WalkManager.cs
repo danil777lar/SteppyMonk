@@ -84,16 +84,30 @@ public class WalkManager : MonoBehaviour
     }
 
     private void CheckOpora(){
-        Vector3 rayOrigin = GetCurrentLeg().position;
-        rayOrigin.y += 5f; 
-        Ray ray = new Ray(rayOrigin, Vector3.down);
-        RaycastHit hit;
-        if (Physics.Raycast(ray.origin, ray.direction, out hit)){
-            if (hit.transform.tag == "Opora") Debug.Log("OK");
-            else if (hit.transform.tag == "Point") {
-                hit.transform.gameObject.GetComponent<CheckPointGenerator>().Generate();
-            } else GameOver();
-        } else GameOver();
+        Transform[] rayPoints = GetCurrentLeg().gameObject.GetComponentsInChildren<Transform>();
+
+        bool[] hitItog = new bool[2];
+
+        for (int i = 1; i < 3; i++){
+            Vector3 rayOrigin = rayPoints[i].position;
+            rayOrigin.y += 5f; 
+            Ray ray = new Ray(rayOrigin, Vector3.down);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray.origin, ray.direction, out hit)){
+                if (hit.transform.tag == "Opora") hitItog[i-1] = true;
+                else if (hit.transform.tag == "Point") {
+                    hit.transform.gameObject.GetComponent<CheckPointGenerator>().GenerateNext();
+                    hitItog[i-1] = true;
+                } else hitItog[i-1] = false;
+            } else hitItog[i-1] = false;
+
+            Debug.DrawLine(rayOrigin, hit.point, Color.blue);
+        }
+
+        if (hitItog[0] && hitItog[1]) Debug.Log("OK");
+        else GameOver();
+        
     }
 
     private void GameOver(){
