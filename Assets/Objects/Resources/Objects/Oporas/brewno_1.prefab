@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3878337717469298419}
   - component: {fileID: 1312351596785519161}
   - component: {fileID: 6176460038659050002}
+  - component: {fileID: 1876438082972239433}
   m_Layer: 0
   m_Name: brewno_1
   m_TagString: Opora
@@ -94,3 +95,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: -1
   m_Mesh: {fileID: -685720463700850231, guid: 77793d953f0174044b374f814b43ee65, type: 3}
+--- !u!114 &1876438082972239433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663881422020209644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a8f5f5a45afbb43854024e13dcbbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

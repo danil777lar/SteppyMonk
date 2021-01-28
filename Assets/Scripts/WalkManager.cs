@@ -113,7 +113,10 @@ public class WalkManager : MonoBehaviour
             RaycastHit hit;
 
             if (Physics.Raycast(ray.origin, ray.direction, out hit)){
-                if (hit.transform.tag == "Opora") hitItog[i-1] = true;
+                if (hit.transform.tag == "Opora") {
+                    hitItog[i-1] = true;
+                    hit.transform.gameObject.GetComponent<Pillar>().Shine();
+                }
                 else if (hit.transform.tag == "Point") {
                     hit.transform.gameObject.GetComponent<CheckPointGenerator>().GenerateNext();
                     hitItog[i-1] = true;
