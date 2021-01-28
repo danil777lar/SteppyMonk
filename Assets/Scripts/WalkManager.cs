@@ -6,12 +6,15 @@ using UnityEngine.EventSystems;
 public class WalkManager : MonoBehaviour
 {
     public Transform hips;
-    public Transform leftFoot;
-    public Transform rightFoot;
+    public Foot leftFoot;
+    public Foot rightFoot;
 
     public GameStateManager stateManager;
 
     public float duration = 5f;
+
+    private Material glovingMaterial;
+    private Material normalMaterial;
 
     private int currentLeg = 0;
 
@@ -19,6 +22,10 @@ public class WalkManager : MonoBehaviour
     private float startTime = -1f;
 
     private float deathPoint;
+
+    void Start(){
+        rightFoot.StartAnim(1);
+    }
     
     void Update()
     {
@@ -32,8 +39,8 @@ public class WalkManager : MonoBehaviour
     }
 
     private void HipsToCenter(){
-        float leftx = leftFoot.position.x;
-        float rightx = rightFoot.position.x;
+        float leftx = leftFoot.transform.position.x;
+        float rightx = rightFoot.transform.position.x;
         float center = 0f;
 
         if (leftx < rightx) hips.position = new Vector3( leftx+((rightx-leftx)/2), hips.position.y, hips.position.z );
@@ -49,7 +56,15 @@ public class WalkManager : MonoBehaviour
     private void EndStep(){
         startTime = -1f;
         GetCurrentLeg().position = new Vector3(GetCurrentLeg().position.x, startPosition.y, GetCurrentLeg().position.z);
-        CheckOpora();
+        if(CheckOpora()){
+            if (currentLeg == 0) {
+                leftFoot.StartAnim(0);
+                rightFoot.StartAnim(1);
+            } else {
+                leftFoot.StartAnim(1);
+                rightFoot.StartAnim(0);
+            }
+        }
     }
 
     private void StepAnimation(){
@@ -69,21 +84,24 @@ public class WalkManager : MonoBehaviour
     }
 
     public Transform GetCurrentLeg(){
-        if (currentLeg == 0) return leftFoot;
-        else return rightFoot;
+        if (currentLeg == 0) return leftFoot.transform;
+        else return rightFoot.transform;
     }
 
     public Transform GetOtherLeg(){
-        if (currentLeg == 1) return leftFoot;
-            else return rightFoot;
+        if (currentLeg == 1) return leftFoot.transform;
+            else return rightFoot.transform;
     }
 
     private void ChangeLeg(){
-        if (currentLeg == 0) currentLeg = 1;
-        else currentLeg = 0;
+        if (currentLeg == 0) {
+            currentLeg = 1;
+        } else {
+            currentLeg = 0;
+        }
     }
 
-    private void CheckOpora(){
+    private bool CheckOpora(){
         Transform[] rayPoints = GetCurrentLeg().gameObject.GetComponentsInChildren<Transform>();
 
         bool[] hitItog = new bool[2];
@@ -105,8 +123,14 @@ public class WalkManager : MonoBehaviour
             Debug.DrawLine(rayOrigin, hit.point, Color.blue);
         }
 
-        if (hitItog[0] && hitItog[1]) Debug.Log("OK");
-        else GameOver();
+        if (hitItog[0] && hitItog[1]){
+            return true;
+        } else {
+            if (currentLeg == 0) leftFoot.StartAnim(2, hitItog[0], hitItog[1]);
+            else rightFoot.StartAnim(2, hitItog[0], hitItog[1]);
+            GameOver();
+            return false;
+        }
         
     }
 

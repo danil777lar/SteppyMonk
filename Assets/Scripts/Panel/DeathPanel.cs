@@ -8,13 +8,11 @@ public class DeathPanel : Panel
 
     public override void Close(){
         base.Close();
-        Time.timeScale = 1f;
     }
 
     public override void Open()
     {
         base.Open();
-        Time.timeScale = 0f;
     }
 
     public void Restart(){

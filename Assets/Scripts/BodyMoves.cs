@@ -21,8 +21,8 @@ public class BodyMoves : MonoBehaviour
 
     private void HipsStabilization(){
         Vector3 newPos = transform.position;
-        float max = Mathf.Max(walkManager.leftFoot.position.x, walkManager.rightFoot.position.x);
-        float min = Mathf.Min(walkManager.leftFoot.position.x, walkManager.rightFoot.position.x); 
+        float max = Mathf.Max(walkManager.leftFoot.transform.position.x, walkManager.rightFoot.transform.position.x);
+        float min = Mathf.Min(walkManager.leftFoot.transform.position.x, walkManager.rightFoot.transform.position.x); 
         newPos.y = normalPoint - ((max-min)/4f); 
 
         transform.position = newPos;

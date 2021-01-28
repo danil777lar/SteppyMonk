@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 4791034266518675387}
   - component: {fileID: 4296663149121545417}
   - component: {fileID: 5606407198306116265}
+  - component: {fileID: 6620302210499195813}
   m_Layer: 0
   m_Name: Foot.L
   m_TagString: Untagged
@@ -734,6 +735,18 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6620302210499195813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791034266518675385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2198f5b999c3546b1b46e944dd4fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4791034266647269410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,8 +1087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hips: {fileID: 4791034266909017629}
-  leftFoot: {fileID: 4791034266518675386}
-  rightFoot: {fileID: 4791034267814798361}
+  leftFoot: {fileID: 6620302210499195813}
+  rightFoot: {fileID: 411098468619862733}
   stateManager: {fileID: 0}
   duration: 0.8
 --- !u!114 &4791034266909017630
@@ -1345,6 +1358,7 @@ GameObject:
   - component: {fileID: 4791034267814798362}
   - component: {fileID: 3040093989963467370}
   - component: {fileID: 7843235569713911209}
+  - component: {fileID: 411098468619862733}
   m_Layer: 0
   m_Name: Foot.R
   m_TagString: Untagged
@@ -1466,6 +1480,18 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &411098468619862733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791034267814798360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2198f5b999c3546b1b46e944dd4fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4791034267844414596
 GameObject:
   m_ObjectHideFlags: 0
