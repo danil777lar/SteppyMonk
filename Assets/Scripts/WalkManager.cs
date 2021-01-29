@@ -10,6 +10,7 @@ public class WalkManager : MonoBehaviour
     public Foot rightFoot;
 
     public GameStateManager stateManager;
+    public Camera cam;
 
     public float duration = 5f;
 
@@ -140,6 +141,23 @@ public class WalkManager : MonoBehaviour
     private void GameOver(){
         deathPoint = Mathf.Max(leftFoot.transform.position.x, rightFoot.transform.position.x);
         stateManager.ChangePanel(2);
+        cam.GetComponent<CameraMoving>().enabled = false;
+
+        Rigidbody[] rb = new Rigidbody[3];
+        rb[0] = GetComponent<Rigidbody>();
+        rb[1] = leftFoot.gameObject.GetComponent<Rigidbody>();
+        rb[2] = rightFoot.gameObject.GetComponent<Rigidbody>();
+
+        rb[0].drag = 0f;
+        rb[0].angularDrag = 0f;
+        rb[0].mass = 1f;
+        rb[1].constraints = RigidbodyConstraints.None;
+        rb[1].drag = 10f;
+        rb[2].constraints = RigidbodyConstraints.None;
+        rb[2].drag = 10f;
+
+        this.enabled = false;
+        GetComponent<BodyMoves>().enabled = false;
     }
 
     public float GetDeathPoint(){
