@@ -18,7 +18,7 @@ public class Foot : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
         Color mainColor = renderer.material.GetColor("Color_EB1218D3"); 
-        renderer.material = new Material(Shader.Find("Shader Graphs/GlovingLevelShader"));
+        renderer.material = new Material(Shader.Find("Shader Graphs/FootShader"));
         renderer.material.SetColor("Color_EB1218D3", mainColor);
         renderer.material.SetFloat("Vector1_3C6BD517", 0f);
     }

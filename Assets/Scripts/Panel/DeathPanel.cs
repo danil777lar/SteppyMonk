@@ -16,8 +16,7 @@ public class DeathPanel : Panel
     }
 
     public void Restart(){
-        float x = player.GetComponentInChildren<WalkManager>().GetDeathPoint() + 100f;
-        x = ((x-(x%100)) - 100f)-5f;
+        float x = player.GetComponentInChildren<WalkManager>().GetSpawn();
         Destroy(player);
         player = Instantiate(Resources.Load<GameObject>("Objects/PlayerDir"));
         player.transform.position = new Vector3(x, -1.770314f, 3.14077f);

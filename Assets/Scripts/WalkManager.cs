@@ -22,10 +22,11 @@ public class WalkManager : MonoBehaviour
     private Vector3 startPosition;
     private float startTime = -1f;
 
-    private float deathPoint;
+    private float spawnPoint;
 
     void Start(){
         rightFoot.StartAnim(1);
+        spawnPoint = GetComponentInParent<Transform>().GetComponentInParent<Transform>().position.x;
     }
     
     void Update()
@@ -120,11 +121,10 @@ public class WalkManager : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Point") {
                     hit.transform.gameObject.GetComponent<CheckPointGenerator>().GenerateNext();
+                    spawnPoint = hit.transform.position.x - 55f;
                     hitItog[i-1] = true;
                 } else hitItog[i-1] = false;
             } else hitItog[i-1] = false;
-
-            Debug.DrawLine(rayOrigin, hit.point, Color.blue);
         }
 
         if (hitItog[0] && hitItog[1]){
@@ -139,7 +139,6 @@ public class WalkManager : MonoBehaviour
     }
 
     private void GameOver(){
-        deathPoint = Mathf.Max(leftFoot.transform.position.x, rightFoot.transform.position.x);
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;
 
@@ -160,8 +159,8 @@ public class WalkManager : MonoBehaviour
         GetComponent<BodyMoves>().enabled = false;
     }
 
-    public float GetDeathPoint(){
-        return deathPoint;
+    public float GetSpawn(){
+        return spawnPoint;
     }
 
 }
