@@ -12,6 +12,10 @@ public class PausePanel : Panel
     public override void Open()
     {
         base.Open();
+        Invoke("InvokeOpen", 1f);
+    }
+
+    private void InvokeOpen(){
         Time.timeScale = 0f;
     }
 }

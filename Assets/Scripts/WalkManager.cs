@@ -11,6 +11,7 @@ public class WalkManager : MonoBehaviour
 
     public GameStateManager stateManager;
     public Camera cam;
+    public PointsCounter counter;
 
     public float duration = 5f;
 
@@ -117,7 +118,9 @@ public class WalkManager : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit)){
                 if (hit.transform.tag == "Opora") {
                     hitItog[i-1] = true;
-                    hit.transform.gameObject.GetComponent<Pillar>().Shine();
+                    Pillar pillar = hit.transform.gameObject.GetComponent<Pillar>(); 
+                    pillar.Shine();
+                    if (pillar.CheckCounter(counter.GetId())) counter.IncrementPoint(); 
                 }
                 else if (hit.transform.tag == "Point") {
                     hit.transform.gameObject.GetComponent<CheckPointGenerator>().GenerateNext();
@@ -139,6 +142,7 @@ public class WalkManager : MonoBehaviour
     }
 
     private void GameOver(){
+        counter.GameOver();
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;
 

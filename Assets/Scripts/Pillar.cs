@@ -10,6 +10,8 @@ public class Pillar : MonoBehaviour
     private float animStart = -1f;
     private int animStep = 0;
 
+    private int counterId = -1;
+
     void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -41,6 +43,14 @@ public class Pillar : MonoBehaviour
 
     public void Shine(){
         animStart = Time.time;
+    }
+
+    public bool CheckCounter(int counterId){
+        if (this.counterId != counterId){
+            this.counterId = counterId;
+            return true;
+        }
+        return false;
     }
 
 

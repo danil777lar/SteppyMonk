@@ -9,6 +9,7 @@ public class GameStateManager : MonoBehaviour
 
     private Panel[] panels;
     private int state = 0;
+    private int newState = 0;
     
     private void Start()
     {
@@ -17,7 +18,12 @@ public class GameStateManager : MonoBehaviour
     }
 
     public void ChangePanel(int newState){
+        this.newState = newState;
         panels[state].Close();
+        Invoke("InvokeChange", 1f);
+    }
+
+    private void InvokeChange(){
         panels[newState].Open();
         state = newState;
     }
