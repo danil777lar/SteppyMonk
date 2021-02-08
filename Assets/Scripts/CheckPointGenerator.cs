@@ -50,7 +50,7 @@ public class CheckPointGenerator : MonoBehaviour
         } 
     }
 
-    public void GenerateNext(){
+    public bool GenerateNext(){
         if (isNewPoint){
             GameObject nextPoint = Instantiate(Resources.Load<GameObject>("Objects/CheckPoint"));
             nextPoint.transform.parent = transform.parent;
@@ -68,7 +68,9 @@ public class CheckPointGenerator : MonoBehaviour
             }
             text.text = "" + PlayerPrefs.GetInt( "Distance_0" ) + "m";
             GetComponent<Animator>().Play("Base Layer.OpenDistanceText");
+            return true;
         }   
+        return false;
     }
 
     public void SetCreator(CheckPointGenerator c){

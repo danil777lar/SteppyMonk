@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PausePanel : Panel
 {
@@ -12,6 +13,7 @@ public class PausePanel : Panel
     public override void Open()
     {
         base.Open();
+        GetComponentInChildren<Text>().text = ""+PlayerPrefs.GetInt("Money");
         Invoke("InvokeOpen", 1f);
     }
 

@@ -123,7 +123,8 @@ public class WalkManager : MonoBehaviour
                     if (pillar.CheckCounter(counter.GetId())) counter.IncrementPoint(); 
                 }
                 else if (hit.transform.tag == "Point") {
-                    hit.transform.gameObject.GetComponent<CheckPointGenerator>().GenerateNext();
+                    CheckPointGenerator point = hit.transform.gameObject.GetComponent<CheckPointGenerator>(); 
+                    if (point.GenerateNext()) stateManager.GetComponentInChildren<InGameMoneyWidget>().EarnMoney(2);
                     spawnPoint = hit.transform.position.x - 55f;
                     hitItog[i-1] = true;
                 } else hitItog[i-1] = false;
