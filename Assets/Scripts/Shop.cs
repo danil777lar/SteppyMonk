@@ -7,6 +7,8 @@ public class Shop : MonoBehaviour
 {
     public Button playButton;
     public Button adButton;
+    public Button backButton;
+    public Button restartButton;
 
     public Chest[] chests;
 
@@ -26,11 +28,9 @@ public class Shop : MonoBehaviour
                 Chest chest = hit.transform.gameObject.GetComponent<Chest>();
                 if(chest != null && chest.clicable && !chest.choosed){
                     chest.ChooseChest();
-                    chest.transform.localScale = new Vector3(.2f, .2f, .2f);
+                    ShowChestClickedUI();
                     for (int i = 0; i < chests.Length; i++){
                         chests[i].clicable = false;
-                        ShowChestClickedUI();
-                        firstTry = false;
                     }
                 }
             }
@@ -38,8 +38,13 @@ public class Shop : MonoBehaviour
     }
 
     private void ShowChestClickedUI(){
-        playButton.gameObject.SetActive(false);
-        adButton.gameObject.SetActive(true);
+        SwitchUIElement(playButton, false); 
+        SwitchUIElement(backButton, false);
+        SwitchUIElement(adButton, true);
+        SwitchUIElement(restartButton, true);
+
+        if (!firstTry) adButton.interactable = false;
+        firstTry = false;
 
         Animator[] ui = GetComponentsInChildren<Animator>();
         for (int i = 0; i < ui.Length; i++){
@@ -72,7 +77,38 @@ public class Shop : MonoBehaviour
             ui[i].Play("Base Layer.Close");
         }
     }
+    
+    public void RestartButtonClicked(){
+        firstTry = true;
+        for (int i = 0; i < chests.Length; i++){
+            chests[i].Restart();
+        }
+        Animator[] ui = GetComponentsInChildren<Animator>();
+        for (int i = 0; i < ui.Length; i++){
+            ui[i].Play("Base Layer.Close");
+        }
+        Invoke("RestartInvoke", 1f);
+    }
 
+    private void RestartInvoke(){
+        SwitchUIElement(playButton, true); 
+        SwitchUIElement(backButton, true);
+        SwitchUIElement(adButton, false);
+        SwitchUIElement(restartButton, false);
+
+        UpdateUI();
+
+        Animator[] ui = GetComponentsInChildren<Animator>();
+        for (int i = 0; i < ui.Length; i++){
+            ui[i].transform.localScale = new Vector3(1f, 1f, 1f);
+            ui[i].Play("Base Layer.Open");
+        }
+    }
+
+    private void SwitchUIElement(Button btn, bool isActive){
+        btn.transform.localScale = new Vector3(1f, 1f, 1f);
+        btn.gameObject.SetActive(isActive);
+    }
 
     public void AdButtonClicked(){
         //TODO - make ad

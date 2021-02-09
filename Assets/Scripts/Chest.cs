@@ -20,11 +20,14 @@ public class Chest : MonoBehaviour
 
     public void ChooseChest(){
         // anim
+        transform.localScale = new Vector3(.2f, .2f, .2f);
         choosed = true;
     }
 
-    void Start()
-    {
-        
+    public void Restart(){
+        // anim
+        transform.localScale = new Vector3(3f, 3f, 3f);
+        choosed = false;
+        clicable = false;
     }
 }
