@@ -9,7 +9,6 @@ public class MaskLoader : MonoBehaviour
     void Start()
     {
         LoadMask(PlayerPrefs.GetInt("Mask"));
-        
     }
 
     public void LoadMask(int id){

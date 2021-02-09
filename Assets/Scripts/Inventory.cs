@@ -16,9 +16,9 @@ public class Inventory : MonoBehaviour
     private int currentMask;
     private int maskNum;
 
-    void Awake()
+    void Start()
     {
-        currentMask = PlayerPrefs.GetInt("mask");
+        currentMask = PlayerPrefs.GetInt("Mask");
         maskNum = Resources.LoadAll<Mask>("Objects/Masks/").Length;
         maskLoader.LoadMask(currentMask);
         UpdateUI();
@@ -35,8 +35,11 @@ public class Inventory : MonoBehaviour
         if (currentMask == maskNum-1) rightButton.interactable = false;
         else rightButton.interactable = true;
 
-        if (CheckIdInInventory(currentMask)) okButton.interactable = true;
-        else okButton.interactable = false;
+        if (currentMask == PlayerPrefs.GetInt("Mask")) okButton.interactable = false;
+        else okButton.interactable = true;
+
+        if (CheckIdInInventory(currentMask)) okButton.GetComponentInChildren<Text>().text = "OK";
+        else okButton.GetComponentInChildren<Text>().text = "X";
     }
 
     public void GetNext(){
@@ -52,7 +55,23 @@ public class Inventory : MonoBehaviour
     }
 
     public void OkButtonPressed(){
-        PlayerPrefs.SetInt("Mask", currentMask);
+        if (CheckIdInInventory(currentMask)){
+            PlayerPrefs.SetInt("Mask", currentMask);
+            PlayerPrefs.Save();
+        }
+        UpdateUI();
+    }
+
+    public void BackButtonPressed(){
+        currentMask = PlayerPrefs.GetInt("Mask");
+        maskLoader.LoadMask(currentMask);
+        UpdateUI();
+
+        Invoke("BackInvoke", 1f);
+    }
+
+    private void BackInvoke(){
+        GetComponentsInParent<Transform>()[1].gameObject.GetComponentInChildren<SceneTransition>().SwitchScene("SampleScene");
     }
 
     private bool CheckIdInInventory(int id){
