@@ -14,6 +14,8 @@ public class Shop : MonoBehaviour
 
     private bool firstTry = true;
 
+    private int rewardId;
+
     void Start()
     {
         UpdateUI();
@@ -68,8 +70,24 @@ public class Shop : MonoBehaviour
 
     public void Play(){
         if (firstTry) MoneyManager.SpendMoney(100);
+
+        int rewardNum = Resources.LoadAll<Mask>("Objects/Masks/").Length;
+        int[] ids = new int[chests.Length];
+
         for(int i = 0; i < chests.Length; i++){
-            chests[i].ShowChest();
+            bool isCorrect = false;
+
+            while(!isCorrect){
+                isCorrect = true;
+                int id = Random.Range(0, rewardNum);
+                for(int j = 0; j < i; j++){
+                    if (ids[j] == id) isCorrect = false;
+                }
+                ids[i] = id;
+            }
+            if (firstTry) chests[i].ShowChest(ids[i]);
+            else chests[i].ShowChest();
+            Debug.Log(""+ids[i]);
         }
         UpdateUI();
         Animator[] ui = GetComponentsInChildren<Animator>();
@@ -79,6 +97,21 @@ public class Shop : MonoBehaviour
     }
     
     public void RestartButtonClicked(){
+        // GetReward
+        bool isMoney = false;
+        string inventory = PlayerPrefs.GetString("Inventory");
+        string[] splitedInventory = inventory.Split(':');
+        for (int i = 0; i < splitedInventory.Length; i++){
+            if (int.Parse(splitedInventory[i]) == rewardId) isMoney = true;
+        }
+
+        if (isMoney) MoneyManager.EarnMoney(50);
+        else {
+            PlayerPrefs.SetString("Inventory", inventory+":"+rewardId);
+            PlayerPrefs.Save();
+        }
+
+        // Restart all
         firstTry = true;
         for (int i = 0; i < chests.Length; i++){
             chests[i].Restart();
@@ -91,6 +124,7 @@ public class Shop : MonoBehaviour
     }
 
     private void RestartInvoke(){
+        adButton.interactable = true;
         SwitchUIElement(playButton, true); 
         SwitchUIElement(backButton, true);
         SwitchUIElement(adButton, false);
@@ -113,5 +147,9 @@ public class Shop : MonoBehaviour
     public void AdButtonClicked(){
         //TODO - make ad
         Play();  
+    }
+
+    public void SetReward(int maskId){
+        rewardId = maskId;
     }
 }
