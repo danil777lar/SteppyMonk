@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Foot : MonoBehaviour
 {
+    public Color mainColor;
+
     private Renderer renderer;
     private float animDuration = 0.4f;
 
@@ -16,8 +18,7 @@ public class Foot : MonoBehaviour
 
     void Start()
     {
-        renderer = GetComponent<Renderer>();
-        Color mainColor = renderer.material.GetColor("Color_EB1218D3"); 
+        renderer = GetComponent<Renderer>(); 
         renderer.material = new Material(Shader.Find("Shader Graphs/FootShader"));
         renderer.material.SetColor("Color_EB1218D3", mainColor);
         renderer.material.SetFloat("Vector1_3C6BD517", 0f);

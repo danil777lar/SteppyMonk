@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Red
-  m_Shader: {fileID: -6465566751694194690, guid: d96f8d229fc56f140a662209bf521c95,
+  m_Shader: {fileID: -6465566751694194690, guid: e45fa391d067ccd41a69a0d817a5057d,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -122,6 +122,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_5DDA0432: {r: 0.6509804, g: 0.36862746, b: 0.27450982, a: 0}
     - Color_E6E06023: {r: 0.4, g: 0.4, b: 0.4, a: 0}
     - Color_EB1218D3: {r: 0.8078432, g: 0.34509805, b: 0.30588236, a: 0}
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}

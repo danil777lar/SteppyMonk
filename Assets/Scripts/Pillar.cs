@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pillar : MonoBehaviour
 {
+    public Color mainColor;
+
     private Renderer renderer;
     private float animDuration = 0.3f;
 
@@ -15,10 +17,9 @@ public class Pillar : MonoBehaviour
     void Start()
     {
         renderer = GetComponent<Renderer>();
-        Color mainColor = renderer.material.GetColor("Color_EB1218D3"); 
-        renderer.material = new Material(Shader.Find("Shader Graphs/PillarShader2"));
-        renderer.material.SetColor("Color_EB1218D3", mainColor);
-        renderer.material.SetFloat("Vector1_3C6BD517", 1f);
+        renderer.material = new Material(Shader.Find("Shader Graphs/PillarShaderPBR"));
+        renderer.material.SetColor("Color_60E41B3B", mainColor);
+        renderer.material.SetFloat("Vector1_3D3B3EC7", 1f);
     }
 
     private void Update(){
@@ -27,9 +28,9 @@ public class Pillar : MonoBehaviour
 
     private void ShineAnim(){
         float t = (Time.time - animStart)/animDuration;
-        if (animStep == 0) renderer.material.SetFloat("Vector1_7153798D", Mathf.Lerp(-0.1f, 0.1f, t));//shinepart to 0.1
-        else if (animStep == 1) renderer.material.SetFloat("Vector1_190BFB08", Mathf.Lerp(-1f, 1f, t));//direction to 1
-        else if (animStep == 2) renderer.material.SetFloat("Vector1_7153798D", Mathf.Lerp(0.1f, -0.1f, t));//shinepart to -0.1
+        if (animStep == 0) renderer.material.SetFloat("Vector1_F6818F05", Mathf.Lerp(-0.1f, 0.1f, t));//shinepart to 0.1
+        else if (animStep == 1) renderer.material.SetFloat("Vector1_25E8DD92", Mathf.Lerp(-1f, 1f, t));//direction to 1
+        else if (animStep == 2) renderer.material.SetFloat("Vector1_F6818F05", Mathf.Lerp(0.1f, -0.1f, t));//shinepart to -0.1
 
         if (t >= 1f && animStep < 3) {
             animStart = Time.time;
@@ -37,7 +38,7 @@ public class Pillar : MonoBehaviour
         } else if (t >= 1f && animStep >= 3){
             animStart = -1f;
             animStep = 0; 
-            renderer.material.SetFloat("Vector1_190BFB08", -1f);
+            renderer.material.SetFloat("Vector1_25E8DD92", -1f);
         }
     }
 

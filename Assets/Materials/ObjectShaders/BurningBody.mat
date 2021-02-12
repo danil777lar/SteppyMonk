@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BurningBody
-  m_Shader: {fileID: -6465566751694194690, guid: 34042a9b6b20c4f43853c5d2c931518a,
+  m_Shader: {fileID: -6465566751694194690, guid: 02fd13a765c01644581c315862e24f01,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -129,6 +129,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_120B7306: {r: 1367.1202, g: 1270.419, b: 0, a: 0}
+    - Color_4813B737: {r: 0.7830189, g: 0.75121117, b: 0.7423906, a: 0}
     - Color_8BB8DFC5: {r: 1024, g: 0, b: 0, a: 0}
     - Color_E6E06023: {r: 0.404, g: 0.404, b: 0.404, a: 0}
     - Color_EB1218D3: {r: 0.9490197, g: 0.87843144, b: 0.7372549, a: 0}
