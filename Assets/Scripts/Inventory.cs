@@ -13,6 +13,9 @@ public class Inventory : MonoBehaviour
     public Button rightButton;
     public Button okButton;
 
+    public Transform particleSpawn;
+    public GameObject smoke;
+
     private int currentMask;
     private int maskNum;
 
@@ -44,14 +47,29 @@ public class Inventory : MonoBehaviour
 
     public void GetNext(){
         currentMask++;
-        maskLoader.LoadMask(currentMask);
+        Invoke("LoadMask", 0.25f);
         UpdateUI();
+        SpawnSmoke();
     }
 
     public void GetPrevious(){
         currentMask--;
-        maskLoader.LoadMask(currentMask);
+        Invoke("LoadMask", 0.25f);
         UpdateUI();
+        SpawnSmoke();
+    }
+
+    private void LoadMask(){
+        maskLoader.LoadMask(currentMask);
+    }
+
+    private void SpawnSmoke(){
+        GameObject particles = Instantiate(smoke);
+        particles.transform.parent = particleSpawn.transform;
+        particles.transform.localPosition = new Vector3(0f, 0f, 0f);
+        particles.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        particles.transform.localScale = new Vector3(1f, 1f, 1f);
+        Destroy(particles, 2f);
     }
 
     public void OkButtonPressed(){
@@ -64,9 +82,9 @@ public class Inventory : MonoBehaviour
 
     public void BackButtonPressed(){
         currentMask = PlayerPrefs.GetInt("Mask");
-        maskLoader.LoadMask(currentMask);
+        Invoke("LoadMask", 0.25f);
         UpdateUI();
-
+        SpawnSmoke();
         Invoke("BackInvoke", 1f);
     }
 

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: maskMaterial 1
+  m_Name: maskMaterial 4
   m_Shader: {fileID: -6465566751694194690, guid: 02fd13a765c01644581c315862e24f01,
     type: 3}
   m_ShaderKeywords: 
@@ -63,7 +63,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_190BFB08: -1
-    - Vector1_320954DE: 2.53
+    - Vector1_320954DE: 2
     - Vector1_3C6BD517: 1
     - Vector1_7153798D: 0.01
     - Vector1_FC62A6FA: -0.0012
@@ -90,9 +90,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_120B7306: {r: 1024, g: 943.5812, b: 0, a: 0}
-    - Color_4813B737: {r: 0.7735849, g: 0.73575795, b: 0.72614807, a: 0}
+    - Color_4813B737: {r: 0.77254903, g: 0.7372549, b: 0.7254902, a: 0}
     - Color_8BB8DFC5: {r: 1367.12, g: 0, b: 0, a: 0}
-    - Color_EB1218D3: {r: 0.4310842, g: 0.3753113, b: 0.894, a: 0}
+    - Color_EB1218D3: {r: 0.9150943, g: 0.2946968, b: 0.22014059, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

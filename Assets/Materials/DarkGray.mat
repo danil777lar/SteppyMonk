@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BurningBody
-  m_Shader: {fileID: -6465566751694194690, guid: 02fd13a765c01644581c315862e24f01,
+  m_Name: DarkGray
+  m_Shader: {fileID: -6465566751694194690, guid: e45fa391d067ccd41a69a0d817a5057d,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -94,12 +94,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
-    - Vector1_190BFB08: 0
     - Vector1_320954DE: 0.94
-    - Vector1_3C6BD517: 1
-    - Vector1_7153798D: 0.01
     - Vector1_AA1B6164: 0.1
-    - Vector1_FC62A6FA: -0.0012
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -128,13 +124,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_120B7306: {r: 1367.1202, g: 1270.419, b: 0, a: 0}
-    - Color_4813B737: {r: 0.77254903, g: 0.7372549, b: 0.7254902, a: 0}
-    - Color_8BB8DFC5: {r: 1024, g: 0, b: 0, a: 0}
+    - Color_5DDA0432: {r: 0.2886387, g: 0.29799998, b: 0.29487956, a: 0}
     - Color_E6E06023: {r: 0.404, g: 0.404, b: 0.404, a: 0}
     - Color_EB1218D3: {r: 0.9490197, g: 0.87843144, b: 0.7372549, a: 0}
     - _BaseColor: {r: 1, g: 0.81277317, b: 0, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.81277317, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
