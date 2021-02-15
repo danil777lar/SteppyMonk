@@ -68,6 +68,7 @@ public class CheckPointGenerator : MonoBehaviour
             }
             text.text = "" + PlayerPrefs.GetInt( "Distance_0" ) + "m";
             GetComponent<Animator>().Play("Base Layer.OpenDistanceText");
+            if (!startGenerate) GetComponent<AudioSource>().Play();
             return true;
         }   
         return false;

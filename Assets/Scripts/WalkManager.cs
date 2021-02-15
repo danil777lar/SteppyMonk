@@ -146,6 +146,7 @@ public class WalkManager : MonoBehaviour
         counter.GameOver();
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;
+        GetComponent<AudioSource>().Play();
 
         Rigidbody[] rb = new Rigidbody[3];
         rb[0] = GetComponent<Rigidbody>();

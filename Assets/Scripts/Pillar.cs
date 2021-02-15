@@ -6,6 +6,7 @@ public class Pillar : MonoBehaviour
 {
     public Color mainColor;
 
+    private AudioSource audio;
     private Renderer renderer;
     private float animDuration = 0.3f;
 
@@ -16,6 +17,9 @@ public class Pillar : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+        audio.clip = Resources.Load<AudioClip>("Sound/Keylimba/"+Random.Range(1, 7));
+
         renderer = GetComponent<Renderer>();
         renderer.material = new Material(Shader.Find("Shader Graphs/PillarShaderPBR"));
         renderer.material.SetColor("Color_60E41B3B", mainColor);
@@ -44,6 +48,7 @@ public class Pillar : MonoBehaviour
 
     public void Shine(){
         animStart = Time.time;
+        audio.Play();
     }
 
     public bool CheckCounter(int counterId){

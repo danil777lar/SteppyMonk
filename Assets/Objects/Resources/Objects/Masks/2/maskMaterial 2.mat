@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: maskMaterial 2
-  m_Shader: {fileID: -6465566751694194690, guid: 02fd13a765c01644581c315862e24f01,
+  m_Shader: {fileID: -6465566751694194690, guid: d96f8d229fc56f140a662209bf521c95,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -92,7 +92,7 @@ Material:
     - Color_120B7306: {r: 1024, g: 943.5812, b: 0, a: 0}
     - Color_4813B737: {r: 0.8509804, g: 0.6806065, b: 0.33333337, a: 0}
     - Color_8BB8DFC5: {r: 1367.12, g: 0, b: 0, a: 0}
-    - Color_EB1218D3: {r: 0.37647066, g: 0.89411765, b: 0.4260406, a: 0}
+    - Color_EB1218D3: {r: 0.83137256, g: 0.74160665, b: 0.6666667, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

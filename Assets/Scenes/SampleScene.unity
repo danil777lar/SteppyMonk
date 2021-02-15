@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 1, g: 0, b: 0, a: 1}
-  m_FogMode: 2
-  m_FogDensity: 1
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 3
+  m_Fog: 1
+  m_FogColor: {r: 0.7176471, g: 0.6313726, b: 0.63529414, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.01
+  m_LinearFogStart: 28
+  m_LinearFogEnd: 58.6
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 1
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -34299,11 +34299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2281157184642630293, guid: ef07c0dbb2446df44870df232b4a07d9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4791034266909017631, guid: ef07c0dbb2446df44870df232b4a07d9,
         type: 3}
       propertyPath: stateManager
@@ -34313,11 +34308,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerDir
-      objectReference: {fileID: 0}
-    - target: {fileID: 4791034267947223486, guid: ef07c0dbb2446df44870df232b4a07d9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4791034267947223487, guid: ef07c0dbb2446df44870df232b4a07d9,
         type: 3}
