@@ -11,6 +11,9 @@ public class Chest : MonoBehaviour
     public bool choosed = false;
     public bool clicable = false;
 
+    [SerializeField]
+    private Shader shader;
+
     private Renderer bodyRenderer;
     private Renderer topRenderer;
     private Animator animator;
@@ -23,7 +26,7 @@ public class Chest : MonoBehaviour
         topRenderer = GetComponentsInChildren<Renderer>()[1];
         animator = GetComponent<Animator>();
 
-        bodyRenderer.material = new Material(Shader.Find("Shader Graphs/ChestShader"));
+        bodyRenderer.material = new Material(shader);
         bodyRenderer.material.SetColor("Color_EB1218D3", color);
         bodyRenderer.material.SetFloat("Vector1_C40376B7", 1f);
         bodyRenderer.material.SetFloat("Vector1_ED51A5EF", burningLevel);

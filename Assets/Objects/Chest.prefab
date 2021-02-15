@@ -133,6 +133,7 @@ MonoBehaviour:
   burningLevel: 307
   choosed: 0
   clicable: 0
+  shader: {fileID: -6465566751694194690, guid: 137de60e0136f6f4a9b969549ad88560, type: 3}
 --- !u!1 &7792061525302055626
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +237,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7931776400843583008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0168}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.031}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 8014586512873477609}
   m_RootOrder: 0

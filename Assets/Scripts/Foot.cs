@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Foot : MonoBehaviour
 {
-    public Color mainColor;
+    [SerializeField]
+    private Shader shader;
 
     private Renderer renderer;
     private float animDuration = 0.4f;
@@ -19,8 +20,7 @@ public class Foot : MonoBehaviour
     void Start()
     {
         renderer = GetComponent<Renderer>(); 
-        renderer.material = new Material(Shader.Find("Shader Graphs/FootShader"));
-        renderer.material.SetColor("Color_EB1218D3", mainColor);
+        renderer.material = new Material(shader);
         renderer.material.SetFloat("Vector1_3C6BD517", 0f);
     }
 
