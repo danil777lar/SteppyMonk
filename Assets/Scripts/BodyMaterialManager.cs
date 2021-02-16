@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BodyMaterialManager : MonoBehaviour
 {
-    public float intensity = 1.5f;
+    public float intensity = 1.3f;
     [SerializeField] private Material bodyMaterial;
     [SerializeField] private Renderer leftfoot;
     [SerializeField] private Renderer rightfoot;

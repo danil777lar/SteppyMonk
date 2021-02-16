@@ -14,6 +14,11 @@ public class Chest : MonoBehaviour
     [SerializeField]
     private Shader shader;
 
+    [SerializeField]
+    private ParticleSystem chestSmoke;
+    [SerializeField]
+    private ParticleSystem rewardSmoke;
+
     private Renderer bodyRenderer;
     private Renderer topRenderer;
     private Animator animator;
@@ -53,7 +58,7 @@ public class Chest : MonoBehaviour
         clicable = true;
 
         reward = Instantiate(Resources.LoadAll<Mask>("Objects/Masks/")[id].gameObject);
-        reward.transform.parent = GetComponentsInChildren<Transform>()[1];
+        reward.transform.parent = GetComponentsInChildren<Transform>()[2];
         reward.transform.localPosition = new Vector3(0f, 0f, 0f);
         reward.transform.localScale = new Vector3(10f, 10f, 10f);
         reward.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
@@ -74,18 +79,30 @@ public class Chest : MonoBehaviour
         animator.Play("Base Layer.OpenChest");
         choosed = true;
         shop.SetReward(maskId);
+        chestSmoke.Play();
     }
 
     public void Restart(){
         if (choosed) animator.Play("Base Layer.CloseChest");
+        chestSmoke.Stop();
         choosed = false;
         clicable = false;
         maskId = -1;
-        Invoke("InvokeRestart", 1f);
+        Invoke("InvokeRestart", 2f);
     }
 
     private void InvokeRestart(){
         Destroy(reward);
         animator.Play("HidChest");
+    }
+
+    public void GetReward(){
+        if (choosed){
+            rewardSmoke.Play();
+            Invoke("InvokeGetReward", 0.5f);
+        }  
+    }
+    private void InvokeGetReward(){
+        reward.transform.localScale = new Vector3(0f, 0f, 0f);
     }
 }

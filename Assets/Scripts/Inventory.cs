@@ -47,20 +47,19 @@ public class Inventory : MonoBehaviour
 
     public void GetNext(){
         currentMask++;
-        Invoke("LoadMask", 0.25f);
-        UpdateUI();
+        Invoke("LoadMask", 0.5f);
         SpawnSmoke();
     }
 
     public void GetPrevious(){
         currentMask--;
-        Invoke("LoadMask", 0.25f);
-        UpdateUI();
+        Invoke("LoadMask", 0.5f);
         SpawnSmoke();
     }
 
     private void LoadMask(){
         maskLoader.LoadMask(currentMask);
+        UpdateUI();
     }
 
     private void SpawnSmoke(){

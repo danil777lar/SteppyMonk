@@ -9032,6 +9032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522b0047758fb5f4ba8cc2655c4eb432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyMaterial: {fileID: 2100000, guid: 3069993055750e34b99cfdc140e5defc, type: 2}
 --- !u!4 &540108482
 Transform:
   m_ObjectHideFlags: 0
@@ -34299,6 +34300,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2518004078738184283, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518004078738184283, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.81470275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518004078738184283, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8501839
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518004078738184283, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8679245
+      objectReference: {fileID: 0}
     - target: {fileID: 4791034266909017631, guid: ef07c0dbb2446df44870df232b4a07d9,
         type: 3}
       propertyPath: stateManager

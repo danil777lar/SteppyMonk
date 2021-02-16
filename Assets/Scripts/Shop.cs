@@ -114,6 +114,7 @@ public class Shop : MonoBehaviour
         // Restart all
         firstTry = true;
         for (int i = 0; i < chests.Length; i++){
+            chests[i].GetReward();
             chests[i].Restart();
         }
         Animator[] ui = GetComponentsInChildren<Animator>();
