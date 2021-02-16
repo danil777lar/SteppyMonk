@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8925895161095424633}
-  - component: {fileID: 1150389934873341000}
-  - component: {fileID: 2293797424895961171}
   - component: {fileID: 4640268960316585801}
+  - component: {fileID: 1362272424234595367}
+  - component: {fileID: 7720415531762544160}
   m_Layer: 0
   m_Name: 0
   m_TagString: Untagged
@@ -33,15 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1150389934873341000
-MeshFilter:
+--- !u!114 &4640268960316585801
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4006638600452571499}
-  m_Mesh: {fileID: -8839368762345780380, guid: 2e609fc615cb9c549818acd02d1079bc, type: 3}
---- !u!23 &2293797424895961171
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed19ee9e3a813d4393a0e30d5bb0544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Unface
+  description: boo
+--- !u!23 &1362272424234595367
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79d57964f24384d45b642dc7953d2a55, type: 2}
+  - {fileID: 2100000, guid: 3069993055750e34b99cfdc140e5defc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,17 +86,11 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &4640268960316585801
-MonoBehaviour:
+--- !u!33 &7720415531762544160
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4006638600452571499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed19ee9e3a813d4393a0e30d5bb0544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Blue Mask
-  description: Im Blue
+  m_Mesh: {fileID: -8839368762345780380, guid: 2e609fc615cb9c549818acd02d1079bc, type: 3}

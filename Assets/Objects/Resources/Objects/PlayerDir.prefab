@@ -410,6 +410,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053400081302467404}
+  - component: {fileID: 765150052}
+  - component: {fileID: 765150051}
   m_Layer: 8
   m_Name: BodyParts
   m_TagString: Untagged
@@ -438,6 +440,39 @@ Transform:
   m_Father: {fileID: 4791034267947223487}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &765150052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2281157184642630293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00214a04a66ab2a4f8acef5cb302a252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 1.5
+  bodyMaterial: {fileID: 2100000, guid: 3069993055750e34b99cfdc140e5defc, type: 2}
+  leftfoot: {fileID: 4791034266518675387}
+  rightfoot: {fileID: 4791034267814798362}
+--- !u!111 &765150051
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2281157184642630293}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: c144e2c905b600448823b22e9d3c7817, type: 2}
+  - {fileID: 7400000, guid: 91683cdc24174a04289dd18d0e086dd9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2862707941872179623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,13 +2046,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4791034268065390966}
-  m_LocalRotation: {x: 0.12858115, y: 0.000887841, z: 0.000060647726, w: 0.9916986}
+  m_LocalRotation: {x: 0.10626415, y: 0.0008916662, z: 0.00008481768, w: 0.99433756}
   m_LocalPosition: {x: 0, y: 11.460312, z: -18.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4791034267947223487}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.0050000004, y: -104.775, z: -89.981}
+  m_LocalEulerAnglesHint: {x: 12.2, y: 0.105000004, z: 0.021000002}
 --- !u!20 &4791034268065390858
 Camera:
   m_ObjectHideFlags: 0

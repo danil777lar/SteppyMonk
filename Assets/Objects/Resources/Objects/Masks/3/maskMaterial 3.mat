@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: maskMaterial 2
-  m_Shader: {fileID: -6465566751694194690, guid: 02fd13a765c01644581c315862e24f01,
+  m_Name: maskMaterial 3
+  m_Shader: {fileID: -6465566751694194690, guid: d96f8d229fc56f140a662209bf521c95,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -57,10 +57,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_4C002509_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 40c79dbc43e2cef40893b315cdbc8791, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -94,9 +90,9 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_120B7306: {r: 1024, g: 943.5812, b: 0, a: 0}
-    - Color_4813B737: {r: 0.4339623, g: 0.41144538, b: 0.41144538, a: 0}
+    - Color_4813B737: {r: 0.8113208, g: 0.19517621, b: 0.7653554, a: 0}
     - Color_8BB8DFC5: {r: 1367.12, g: 0, b: 0, a: 0}
-    - Color_EB1218D3: {r: 0.9150943, g: 0.2946968, b: 0.22014059, a: 0}
+    - Color_EB1218D3: {r: 0.8113208, g: 0.78835887, b: 0.753916, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a8f5f5a45afbb43854024e13dcbbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainColor: {r: 0.469, g: 0.19310513, b: 0.049714003, a: 0}
+  mainColor: {r: 0.47058824, g: 0.32541177, b: 0.1802353, a: 0}
 --- !u!82 &6415861926110167096
 AudioSource:
   m_ObjectHideFlags: 0

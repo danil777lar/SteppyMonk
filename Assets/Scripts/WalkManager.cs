@@ -18,6 +18,7 @@ public class WalkManager : MonoBehaviour
     private Material glovingMaterial;
     private Material normalMaterial;
 
+    private bool isWalkable = true;
     private int currentLeg = 0;
 
     private Vector3 startPosition;
@@ -29,13 +30,17 @@ public class WalkManager : MonoBehaviour
         rightFoot.StartAnim(1);
         spawnPoint = GetComponentInParent<Transform>().GetComponentInParent<Transform>().position.x;
     }
+
+    public void SetWalkable(bool isWalkable){
+        this.isWalkable = isWalkable;
+    }
     
     void Update()
     {
         HipsToCenter();
         StepAnimation();  
 
-        if (!EventSystem.current.IsPointerOverGameObject()){
+        if (!EventSystem.current.IsPointerOverGameObject() && isWalkable){
             if (Input.GetMouseButtonDown(0) && startTime == -1f) StartStep();
             if (Input.GetMouseButtonUp(0) && startTime != -1f) EndStep();
         }      
@@ -147,6 +152,7 @@ public class WalkManager : MonoBehaviour
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;
         GetComponent<AudioSource>().Play();
+        GetComponentInParent<BodyMaterialManager>().HideBody();
 
         Rigidbody[] rb = new Rigidbody[3];
         rb[0] = GetComponent<Rigidbody>();
