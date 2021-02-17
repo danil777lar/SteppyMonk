@@ -58,7 +58,7 @@ public class Chest : MonoBehaviour
         clicable = true;
 
         reward = Instantiate(Resources.LoadAll<Mask>("Objects/Masks/")[id].gameObject);
-        reward.transform.parent = GetComponentsInChildren<Transform>()[2];
+        reward.transform.parent = GetComponentsInChildren<Transform>()[3];
         reward.transform.localPosition = new Vector3(0f, 0f, 0f);
         reward.transform.localScale = new Vector3(10f, 10f, 10f);
         reward.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
@@ -79,11 +79,26 @@ public class Chest : MonoBehaviour
         animator.Play("Base Layer.OpenChest");
         choosed = true;
         shop.SetReward(maskId);
+        ParticleSystem.MainModule main = chestSmoke.main;
+        main.simulationSpeed = 0.1f;
         chestSmoke.Play();
+
+        bool isMoney = false;
+        string inventory = PlayerPrefs.GetString("Inventory");
+        string[] splitedInventory = inventory.Split(':');
+        for (int i = 0; i < splitedInventory.Length; i++){
+            if (int.Parse(splitedInventory[i]) == maskId) isMoney = true;
+        }
+        if (isMoney) Invoke("InvokeChoose", 2f);
+    }
+    private void InvokeChoose(){
+        animator.Play("Reward.MaskToMoney");
     }
 
     public void Restart(){
         if (choosed) animator.Play("Base Layer.CloseChest");
+        ParticleSystem.MainModule main = chestSmoke.main;
+        main.simulationSpeed = 2f;
         chestSmoke.Stop();
         choosed = false;
         clicable = false;
@@ -94,6 +109,7 @@ public class Chest : MonoBehaviour
     private void InvokeRestart(){
         Destroy(reward);
         animator.Play("HidChest");
+        animator.Play("Reward.default");
     }
 
     public void GetReward(){

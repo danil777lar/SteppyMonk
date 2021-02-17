@@ -5,6 +5,7 @@ using UnityEngine;
 public class BodyMaterialManager : MonoBehaviour
 {
     public float intensity = 1.3f;
+    public float wobble = 0.5f;
     [SerializeField] private Material bodyMaterial;
     [SerializeField] private Renderer leftfoot;
     [SerializeField] private Renderer rightfoot;
@@ -23,6 +24,7 @@ public class BodyMaterialManager : MonoBehaviour
     void Update()
     {
         bodyMaterial.SetFloat("Vector1_C0B1C65F", intensity);
+        bodyMaterial.SetFloat("Vector1_199B2666", wobble);
         leftfoot.material.SetFloat("Vector1_498AC3A7", intensity);
         rightfoot.material.SetFloat("Vector1_498AC3A7", intensity);
     }

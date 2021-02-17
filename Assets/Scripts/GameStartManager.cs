@@ -14,7 +14,7 @@ public class GameStartManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Money")) PlayerPrefs.SetInt("Money", 1047);
 
         if (!PlayerPrefs.HasKey("Mask")) PlayerPrefs.SetInt("Mask", 0);
-        if (!PlayerPrefs.HasKey("Inventory")) PlayerPrefs.SetString("Inventory", "0:1");
+        if (!PlayerPrefs.HasKey("Inventory")) PlayerPrefs.SetString("Inventory", "0");
     }
 
     private void OnDestroy(){

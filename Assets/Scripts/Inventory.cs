@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
         particles.transform.localPosition = new Vector3(0f, 0f, 0f);
         particles.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         particles.transform.localScale = new Vector3(1f, 1f, 1f);
-        Destroy(particles, 2f);
+        Destroy(particles, 3f);
     }
 
     public void OkButtonPressed(){
