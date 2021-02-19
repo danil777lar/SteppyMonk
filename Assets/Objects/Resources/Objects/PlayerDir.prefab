@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 1.5
+  wobble: 0.5
   bodyMaterial: {fileID: 2100000, guid: 3069993055750e34b99cfdc140e5defc, type: 2}
   leftfoot: {fileID: 4791034266518675387}
   rightfoot: {fileID: 4791034267814798362}
@@ -2748,7 +2749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6901961, g: 0.74509805, b: 0.77254903, a: 1}
+  m_Color: {r: 0.81470275, g: 0.8501839, b: 0.8679245, a: 0.50980395}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
