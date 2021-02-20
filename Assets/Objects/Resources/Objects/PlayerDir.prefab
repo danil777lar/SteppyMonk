@@ -1245,7 +1245,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00033984357, y: 0.0000000011920933, z: -0.013137972}
+  m_ConnectedAnchor: {x: -0.00033984357, y: 0, z: -0.013137972}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   stateManager: {fileID: 0}
   cam: {fileID: 4791034268065390858}
   counter: {fileID: 1341194943735523534}
-  duration: 0.5
+  duration: 0.8
 --- !u!114 &4791034266909017630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,7 +1554,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0024162529, y: 8.9407e-10, z: -0.003299999}
+  m_ConnectedAnchor: {x: 0.0024162529, y: -2.9802333e-10, z: -0.003299999}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -2392,7 +2392,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.005983058, y: 0.0000000011920933, z: 0.008191459}
+  m_ConnectedAnchor: {x: 0.005983058, y: 0, z: 0.008191459}
   m_UseSpring: 0
   m_Spring:
     spring: 0

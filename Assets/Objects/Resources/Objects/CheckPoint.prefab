@@ -19757,7 +19757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0028b2966bd17c744b4a34831659f031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillars: {fileID: 7115021305605400889}
+  pillarsRoot: {fileID: 7115021305605400889}
   startGenerate: 0
 --- !u!95 &6632111947573434507
 Animator:
@@ -24322,7 +24322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7212078019491528012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3966336352971050510}

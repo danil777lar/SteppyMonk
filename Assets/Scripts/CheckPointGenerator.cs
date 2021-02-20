@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class CheckPointGenerator : MonoBehaviour
 {
     // Links
-    public Transform pillars;
+    [SerializeField]
+    private Transform pillarsRoot;
     
     // Values
     public bool startGenerate = false;
@@ -29,25 +30,28 @@ public class CheckPointGenerator : MonoBehaviour
 
     private void GenerateMyself(){
         // Pillars generate
+        Vector3 startPoint = new Vector3(50.01f, -10.81f, 28.1f);
         float workingSpace = 90f;
-        int oporaMaxWidth = 4;
-        int stepMaxLenght = 10;
+        int pillareMax = 5;
+        int pillarMin = 2;
+        int stepMax = 8;
+        int stepMin = 2;
 
-        int seed_oporasNum = Random.seed;
+        ArrayList pillarList = new ArrayList();
+        int currentPoint = 0;
+        while (currentPoint < workingSpace){
+            currentPoint += Random.Range(stepMin, stepMax);
+            if (workingSpace - currentPoint > pillareMax){
+                int pillarLenght = Random.Range(pillarMin, pillareMax+1);
+                GameObject pillar = Instantiate(Resources.Load<GameObject>("Objects/Pillars/Simple/pillar_"+pillarLenght));
+                pillarList.Add(pillar);
+                pillar.transform.parent = pillarsRoot.transform;
+                pillar.transform.localScale = new Vector3(1f, 1f, 1f);
+                pillar.transform.localPosition = new Vector3( startPoint.x - currentPoint, startPoint.y, startPoint.z );
 
-        int workingSpaceInt = Mathf.FloorToInt(workingSpace);
-        int oporasNum = Random.Range(workingSpaceInt/stepMaxLenght, workingSpaceInt/oporaMaxWidth);
-
-        GameObject[] oporas = new GameObject[oporasNum];
-        int oporaId = Random.Range(0, 1);
-        for (int i = 0; i < oporasNum; i++){
-            oporas[i] = Instantiate(Resources.LoadAll<GameObject>("Objects/Oporas/")[oporaId]);
-            oporas[i].transform.parent = pillars;
-            float xpos = -40f + (workingSpace/oporasNum)*i;
-            oporas[i].transform.localPosition = new Vector3(xpos, -3f, 28f);
-
-            if (xpos > 43f) Destroy(oporas[i]);
-        } 
+                currentPoint += pillarLenght;
+            } else break;
+        }
     }
 
     public bool GenerateNext(){
