@@ -16,6 +16,9 @@ public class Inventory : MonoBehaviour
     public Transform particleSpawn;
     public GameObject smoke;
 
+    [SerializeField]
+    private Material blackBlur;
+
     private int currentMask;
     private int maskNum;
 
@@ -32,17 +35,22 @@ public class Inventory : MonoBehaviour
         title.text = mask.title;
         description.text = mask.description;
 
+        if (CheckIdInInventory(currentMask)) okButton.interactable = true;
+        else {
+            okButton.interactable = false;
+            description.text = "...";
+
+            Renderer[] renderers = mask.GetComponentsInChildren<Renderer>();
+            for (int i = 1; i < renderers.Length; i++){
+                renderers[i].material = blackBlur;
+            }
+        }
+
         if (currentMask == 0) leftButton.interactable = false;
         else leftButton.interactable = true;
 
         if (currentMask == maskNum-1) rightButton.interactable = false;
         else rightButton.interactable = true;
-
-        if (currentMask == PlayerPrefs.GetInt("Mask")) okButton.interactable = false;
-        else okButton.interactable = true;
-
-        if (CheckIdInInventory(currentMask)) okButton.GetComponentInChildren<Text>().text = "OK";
-        else okButton.GetComponentInChildren<Text>().text = "X";
     }
 
     public void GetNext(){
@@ -77,14 +85,19 @@ public class Inventory : MonoBehaviour
             PlayerPrefs.Save();
         }
         UpdateUI();
+        GetComponentsInParent<Transform>()[1].gameObject.GetComponentInChildren<SceneTransition>().SwitchScene("SampleScene");
     }
 
     public void BackButtonPressed(){
-        currentMask = PlayerPrefs.GetInt("Mask");
-        Invoke("LoadMask", 0.25f);
-        UpdateUI();
-        SpawnSmoke();
-        Invoke("BackInvoke", 1f);
+        if (currentMask == PlayerPrefs.GetInt("Mask")){
+            GetComponentsInParent<Transform>()[1].gameObject.GetComponentInChildren<SceneTransition>().SwitchScene("SampleScene");    
+        } else {
+            currentMask = PlayerPrefs.GetInt("Mask");
+            Invoke("LoadMask", 0.25f);
+            UpdateUI();
+            SpawnSmoke();
+            Invoke("BackInvoke", 1f);
+        }
     }
 
     private void BackInvoke(){
