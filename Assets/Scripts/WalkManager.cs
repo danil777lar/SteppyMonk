@@ -11,7 +11,8 @@ public class WalkManager : MonoBehaviour
 
     public GameStateManager stateManager;
     public Camera cam;
-    public PointsCounter counter;
+    public PointsCounter pointCounter;
+    public ComboCounter comboCounter;
 
     public float duration = 5f;
 
@@ -25,6 +26,8 @@ public class WalkManager : MonoBehaviour
     private float startTime = -1f;
 
     private float spawnPoint;
+
+    private Pillar pillar;
 
     void Start(){
         rightFoot.StartAnim(1);
@@ -113,7 +116,7 @@ public class WalkManager : MonoBehaviour
         Transform[] rayPoints = GetCurrentLeg().gameObject.GetComponentsInChildren<Transform>();
 
         bool[] hitItog = new bool[2];
-
+        bool isPillar = false;
         for (int i = 1; i < 3; i++){
             Vector3 rayOrigin = rayPoints[i].position;
             rayOrigin.y += 5f; 
@@ -123,9 +126,8 @@ public class WalkManager : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit)){
                 if (hit.transform.tag == "Opora") {
                     hitItog[i-1] = true;
-                    Pillar pillar = hit.transform.gameObject.GetComponent<Pillar>(); 
-                    pillar.Shine();
-                    if (pillar.CheckCounter(counter.GetId())) counter.IncrementPoint(); 
+                    pillar = hit.transform.gameObject.GetComponent<Pillar>();
+                    isPillar = true; 
                 }
                 else if (hit.transform.tag == "Point") {
                     CheckPointGenerator point = hit.transform.gameObject.GetComponent<CheckPointGenerator>(); 
@@ -137,6 +139,11 @@ public class WalkManager : MonoBehaviour
         }
 
         if (hitItog[0] && hitItog[1]){
+            if (isPillar){
+                pillar.StepOn(comboCounter);
+                if (pillar.CheckEnergyBuff() && duration >= 0.3f) duration -= 0.2f;
+                if (pillar.CheckCounter(pointCounter.GetId())) pointCounter.IncrementPoint();
+            } 
             return true;
         } else {
             if (currentLeg == 0) leftFoot.StartAnim(2, hitItog[0], hitItog[1]);
@@ -148,7 +155,8 @@ public class WalkManager : MonoBehaviour
     }
 
     private void GameOver(){
-        counter.GameOver();
+        pointCounter.GameOver();
+        if ( pillar != null ) pillar.GameOver();
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;
         GetComponent<AudioSource>().Play();

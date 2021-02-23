@@ -37,7 +37,7 @@ public class CheckPointGenerator : MonoBehaviour
         int stepMax = 8;
         int stepMin = 2;
 
-        ArrayList pillarList = new ArrayList();
+        List<GameObject> pillarList = new List<GameObject>();
         int currentPoint = 0;
         while (currentPoint < workingSpace){
             currentPoint += Random.Range(stepMin, stepMax);
@@ -52,6 +52,9 @@ public class CheckPointGenerator : MonoBehaviour
                 currentPoint += pillarLenght;
             } else break;
         }
+
+        if (Random.Range(0, 100) < 50) pillarList[Random.Range(0, pillarList.Count)].GetComponent<Pillar>().SetEnergy();
+        pillarsRoot.GetComponent<PillarComboManager>().SetPillarList(pillarList);
     }
 
     public bool GenerateNext(){

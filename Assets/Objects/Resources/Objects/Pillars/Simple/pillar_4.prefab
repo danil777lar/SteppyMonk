@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2203380609179128316}
   - component: {fileID: 8506924595586905007}
   - component: {fileID: 3591507287170585536}
+  - component: {fileID: 4021626636404712212}
   m_Layer: 0
   m_Name: pillar_4
   m_TagString: Opora
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainColor: {r: 0.36078432, g: 0.3254902, b: 0.3254902, a: 0}
+  shine: 0
 --- !u!82 &3591507287170585536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -205,3 +207,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4021626636404712212
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894444240097903688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d3d928a40133d643a06a21e4d693808, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -24307,6 +24307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7115021305605400889}
+  - component: {fileID: 5853401518936834486}
   m_Layer: 0
   m_Name: Pillars
   m_TagString: Untagged
@@ -24328,6 +24329,18 @@ Transform:
   m_Father: {fileID: 3966336352971050510}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5853401518936834486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212078019491528012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20afb52cf7d79c249b3b67f5c3877490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7241648725902975411
 GameObject:
   m_ObjectHideFlags: 0
@@ -32199,7 +32212,7 @@ PrefabInstance:
     - target: {fileID: 1808371581994486168, guid: a21a3b22d95ba4641925beeb2736f121,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0109
+      value: 0.0273
       objectReference: {fileID: 0}
     - target: {fileID: 1808371581994486168, guid: a21a3b22d95ba4641925beeb2736f121,
         type: 3}
@@ -32334,7 +32347,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a9f38034bb6592d498f9245e8040e12e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.046
+      value: 0.018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9f38034bb6592d498f9245e8040e12e,
         type: 3}
