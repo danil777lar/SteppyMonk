@@ -131,7 +131,7 @@ public class WalkManager : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Point") {
                     CheckPointGenerator point = hit.transform.gameObject.GetComponent<CheckPointGenerator>(); 
-                    if (point.GenerateNext()) stateManager.GetComponentInChildren<InGameMoneyWidget>().EarnMoney(2);
+                    if (point.GenerateNext()) stateManager.GetComponentInChildren<InGameMoneyWidget>().EarnMoney(2*comboCounter.PullValue());
                     spawnPoint = hit.transform.position.x - 55f;
                     hitItog[i-1] = true;
                 } else hitItog[i-1] = false;
@@ -155,7 +155,8 @@ public class WalkManager : MonoBehaviour
     }
 
     private void GameOver(){
-        pointCounter.GameOver();
+        pointCounter.Close();
+        comboCounter.Close();
         if ( pillar != null ) pillar.GameOver();
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;

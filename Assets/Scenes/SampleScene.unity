@@ -7088,7 +7088,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e89ba0f1694e52848a082f4bbce17785, type: 3}
+    m_Font: {fileID: 12800000, guid: cf25ebfb8edfbc4478cdf9c818f06eca, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -21507,7 +21507,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e89ba0f1694e52848a082f4bbce17785, type: 3}
+    m_Font: {fileID: 12800000, guid: cf25ebfb8edfbc4478cdf9c818f06eca, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -27145,7 +27145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e89ba0f1694e52848a082f4bbce17785, type: 3}
+    m_Font: {fileID: 12800000, guid: cf25ebfb8edfbc4478cdf9c818f06eca, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -31565,7 +31565,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e89ba0f1694e52848a082f4bbce17785, type: 3}
+    m_Font: {fileID: 12800000, guid: cf25ebfb8edfbc4478cdf9c818f06eca, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -31921,7 +31921,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e89ba0f1694e52848a082f4bbce17785, type: 3}
+    m_Font: {fileID: 12800000, guid: cf25ebfb8edfbc4478cdf9c818f06eca, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -34330,6 +34330,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3574400627561991934, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 8.9407e-10
+      objectReference: {fileID: 0}
     - target: {fileID: 4791034266909017631, guid: ef07c0dbb2446df44870df232b4a07d9,
         type: 3}
       propertyPath: stateManager
@@ -34394,6 +34399,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064902571560023757, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000000011920933
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368583332236044670, guid: ef07c0dbb2446df44870df232b4a07d9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000000011920933
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef07c0dbb2446df44870df232b4a07d9, type: 3}

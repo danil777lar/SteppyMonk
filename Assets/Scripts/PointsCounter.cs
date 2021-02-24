@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PointsCounter : MonoBehaviour
 {
+    private Animator animator;
     private Text text;
     private int id;
     private int points = 0;
@@ -14,6 +15,7 @@ public class PointsCounter : MonoBehaviour
         text = GetComponent<Text>();
         id = Random.Range(0, 10000);
         text.text = ""+points;
+        animator = GetComponent<Animator>();
     }
 
     public int GetId(){
@@ -22,14 +24,24 @@ public class PointsCounter : MonoBehaviour
 
     public void IncrementPoint(){
         points++;
+        Close();
+        Invoke("UpdateUI", .5f);
+    }
+
+    private void UpdateUI(){
         text.text = ""+points;
+        Open();
     }
 
     public int GetPoints(){
         return points;
     }
 
-    public void GameOver(){
-        GetComponent<Animator>().Play("Base Layer.Close");
+    public void Close(){
+        animator.Play("Base Layer.Close");
+    }
+
+    public void Open(){
+        animator.Play("Base Layer.Open");
     }
 }

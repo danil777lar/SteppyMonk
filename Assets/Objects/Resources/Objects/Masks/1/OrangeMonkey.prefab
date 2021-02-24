@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed19ee9e3a813d4393a0e30d5bb0544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Orange Monkey
-  description: "\u0411\u0435\u0440\u0435\u0433\u0438\u0441\u044C \u0412\u0430\u043B\u0443\u043D\u043E\u0432"
+  title: "\u0420\u044B\u0436\u0430\u044F \u041E\u0431\u0435\u0437\u044C\u044F\u043D\u0430"
+  description: "\u0411\u0435\u0440\u0435\u0433\u0438\u0441\u044C \u0432\u0430\u043B\u0443\u043D\u043E\u0432..."
 --- !u!23 &-6429487348491269762
 MeshRenderer:
   m_ObjectHideFlags: 0
