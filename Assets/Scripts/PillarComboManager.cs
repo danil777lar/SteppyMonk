@@ -8,6 +8,7 @@ public class PillarComboManager : MonoBehaviour
     private List<Pillar> comboList = new List<Pillar>();
 
     private ComboCounter counter;
+    private WalkManager walkManager;
 
     private float lastStepTime = -1f;
     private float comboDuration = 1.2f; 
@@ -26,8 +27,9 @@ public class PillarComboManager : MonoBehaviour
         }
     }
 
-    public void PillarStepped(Pillar pillar, ComboCounter counter){
+    public int PillarStepped(Pillar pillar, ComboCounter counter, WalkManager walkManager){
         this.counter = counter;
+        this.walkManager = walkManager;
         if (comboList.Count == 0) comboList.Add(pillar);
         else {
             if ( pillarList.IndexOf(pillar) == pillarList.IndexOf(comboList[comboList.Count-1])+1 ){
@@ -37,6 +39,7 @@ public class PillarComboManager : MonoBehaviour
             }
             else ClearComboList();
         }
+        return pillarList.IndexOf(pillar);
     }
 
     private void ClearComboList(){
@@ -63,5 +66,9 @@ public class PillarComboManager : MonoBehaviour
         }
         ClearComboList();
         maxCombo = 1;
+    }
+
+    public void PillarCrushed(Pillar pillar){
+        walkManager.PillarCrushed(pillarList.IndexOf(pillar));
     }
 }

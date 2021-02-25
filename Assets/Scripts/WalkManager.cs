@@ -29,6 +29,8 @@ public class WalkManager : MonoBehaviour
 
     private Pillar pillar;
 
+    private int[] lastPillarId = {-1, -1};
+
     void Start(){
         rightFoot.StartAnim(1);
         spawnPoint = GetComponentInParent<Transform>().GetComponentInParent<Transform>().position.x;
@@ -59,6 +61,7 @@ public class WalkManager : MonoBehaviour
     }
 
     private void StartStep(){
+        lastPillarId[0] = -1;        
         ChangeLeg();
         startTime = Time.time;
         startPosition = GetCurrentLeg().position;
@@ -140,10 +143,10 @@ public class WalkManager : MonoBehaviour
 
         if (hitItog[0] && hitItog[1]){
             if (isPillar){
-                pillar.StepOn(comboCounter);
+                PushPillarId( pillar.StepOn(comboCounter, this) );
                 if (pillar.CheckEnergyBuff() && duration >= 0.3f) duration -= 0.2f;
                 if (pillar.CheckCounter(pointCounter.GetId())) pointCounter.IncrementPoint();
-            } 
+            } else PushPillarId(-1);
             return true;
         } else {
             if (currentLeg == 0) leftFoot.StartAnim(2, hitItog[0], hitItog[1]);
@@ -182,6 +185,17 @@ public class WalkManager : MonoBehaviour
 
     public float GetSpawn(){
         return spawnPoint;
+    }
+
+    private void PushPillarId(int id){
+        lastPillarId[0] = lastPillarId[1];
+        lastPillarId[1] = id;
+    }
+
+    public void PillarCrushed(int pillarId){
+        if (this.enabled){
+            if (pillarId == lastPillarId[0] || pillarId == lastPillarId[1]) GameOver();
+        }
     }
 
 }

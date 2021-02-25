@@ -13,6 +13,7 @@ public class Pillar : MonoBehaviour
     private AudioSource audio;
     private Renderer renderer;
     private Animator animator;
+    private PillarComboManager pillarComboManager;
     private float animDuration = 0.3f;
 
     private float animStart = -1f;
@@ -36,7 +37,7 @@ public class Pillar : MonoBehaviour
         audio.clip = Resources.Load<AudioClip>("Sound/Keylimba/"+Random.Range(1, 7));
 
         animator = GetComponent<Animator>();
-
+        pillarComboManager = GetComponentInParent<PillarComboManager>();
         renderer = GetComponent<Renderer>();
         renderer.material = new Material(Shader.Find("Shader Graphs/PillarShaderPBR"));
         renderer.material.SetColor("Color_60E41B3B", mainColor);
@@ -53,7 +54,7 @@ public class Pillar : MonoBehaviour
         if (yOffset != 0f) transform.localPosition = new Vector3(fixedPosition.x, fixedPosition.y-yOffset, fixedPosition.z);
     }
 
-    public void StepOn(ComboCounter counter){
+    public int StepOn(ComboCounter counter, WalkManager walkManager){
         if (energy) {
             energy = false;
             animator.Play("Base Layer.EnergyOff");
@@ -62,7 +63,7 @@ public class Pillar : MonoBehaviour
             Invoke("CrushPillar", 2f);
         }
         audio.Play();
-        GetComponentInParent<PillarComboManager>().PillarStepped(this, counter);
+        return pillarComboManager.PillarStepped(this, counter, walkManager);
     }
 
     
@@ -86,6 +87,7 @@ public class Pillar : MonoBehaviour
 
     private void CrushPillar(){
         if (animator.GetBool("Shake")){
+            pillarComboManager.PillarCrushed(this);
             animator.SetBool("Shake", false);
             renderer.enabled = false;
             GetComponent<MeshCollider>().enabled = false;
