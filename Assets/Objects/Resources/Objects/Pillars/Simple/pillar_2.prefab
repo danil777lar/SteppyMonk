@@ -110,7 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainColor: {r: 0.36200002, g: 0.32602486, b: 0.32602486, a: 0}
+  lenght: 2
   shine: 0
+  energyBuff: 0
 --- !u!82 &-5278987322373344035
 AudioSource:
   m_ObjectHideFlags: 0

@@ -157,7 +157,7 @@ public class WalkManager : MonoBehaviour
     private void GameOver(){
         pointCounter.Close();
         comboCounter.Close();
-        if ( pillar != null ) pillar.GameOver();
+        if ( pillar != null ) pillar.SendGameOverToManager();
         stateManager.ChangePanel(2);
         cam.GetComponent<CameraMoving>().enabled = false;
         GetComponent<AudioSource>().Play();

@@ -14558,7 +14558,7 @@ PrefabInstance:
     - target: {fileID: 514084223810690802, guid: c1811c28b7b8a8c4bad6edab0cc46c58,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.200005
+      value: 63.2
       objectReference: {fileID: 0}
     - target: {fileID: 514084223810690802, guid: c1811c28b7b8a8c4bad6edab0cc46c58,
         type: 3}
@@ -14614,6 +14614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pillar_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506924595586905007, guid: c1811c28b7b8a8c4bad6edab0cc46c58,
+        type: 3}
+      propertyPath: yOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1811c28b7b8a8c4bad6edab0cc46c58, type: 3}

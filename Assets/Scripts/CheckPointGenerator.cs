@@ -20,12 +20,14 @@ public class CheckPointGenerator : MonoBehaviour
     // Values
     private bool isNewPoint = true;
     private int moduleLenght = 10;
+    private int difficulty;
 
     void Start()
     {
         text = GetComponentInChildren<Text>();
         GenerateMyself();
         if (startGenerate) GenerateNext();
+        difficulty = 10;//PlayerPrefs.GetInt("Difficulty");//FIXME
     }
 
     private void GenerateMyself(){
@@ -43,17 +45,24 @@ public class CheckPointGenerator : MonoBehaviour
             currentPoint += Random.Range(stepMin, stepMax);
             if (workingSpace - currentPoint > pillareMax){
                 int pillarLenght = Random.Range(pillarMin, pillareMax+1);
-                GameObject pillar = Instantiate(Resources.Load<GameObject>("Objects/Pillars/Simple/pillar_"+pillarLenght));
-                pillarList.Add(pillar);
-                pillar.transform.parent = pillarsRoot.transform;
-                pillar.transform.localScale = new Vector3(1f, 1f, 1f);
-                pillar.transform.localPosition = new Vector3( startPoint.x - currentPoint, startPoint.y, startPoint.z );
+                Pillar pillar = Resources.Load<Pillar>("Objects/Pillars/Simple/pillar_"+pillarLenght);
+                if (Random.Range(1, 11) < difficulty){
+                    if (Random.Range(1, 6) == 1) pillar.SetModification(1);
+                    else pillar.SetModification(2);
+                }
 
+                GameObject pillarObject = Instantiate(pillar.gameObject);
+                pillarList.Add(pillarObject);
+                pillarObject.transform.parent = pillarsRoot.transform;
+                pillarObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                Vector3 position = new Vector3( startPoint.x - currentPoint, startPoint.y, startPoint.z );
+                pillarObject.transform.localPosition = position;
+                
                 currentPoint += pillarLenght;
             } else break;
         }
 
-        if (Random.Range(0, 100) < 50) pillarList[Random.Range(0, pillarList.Count)].GetComponent<Pillar>().SetEnergy();
+        if (Random.Range(0, 100) < 50) pillarList[Random.Range(0, pillarList.Count)].GetComponent<Pillar>().SetModification(1);
         pillarsRoot.GetComponent<PillarComboManager>().SetPillarList(pillarList);
     }
 

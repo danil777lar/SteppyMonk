@@ -58,6 +58,9 @@ public class PillarComboManager : MonoBehaviour
     }
 
     public void RestartPillars(){
+        for (int i = 0; i < pillarList.Count; i++){
+            pillarList[i].Restart();
+        }
         ClearComboList();
         maxCombo = 1;
     }
