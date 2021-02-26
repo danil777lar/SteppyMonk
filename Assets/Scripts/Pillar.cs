@@ -24,7 +24,8 @@ public class Pillar : MonoBehaviour
     private int counterId = -1;
 
     private bool energy = false;
-    private bool celled = true;
+    private bool energyEnabled = false;
+    private bool celled = false;
 
     // Animator values
     public float shine = 0f;
@@ -41,6 +42,7 @@ public class Pillar : MonoBehaviour
         renderer = GetComponent<Renderer>();
         renderer.material = new Material(Shader.Find("Shader Graphs/PillarShaderPBR"));
         renderer.material.SetColor("Color_60E41B3B", mainColor);
+        renderer.material.SetFloat("Vector1_6F23C3F7", Random.Range(0f, 2f));
         if (energy) animator.Play("Base Layer.EnergyOn");
     }
 
@@ -55,8 +57,8 @@ public class Pillar : MonoBehaviour
     }
 
     public int StepOn(ComboCounter counter, WalkManager walkManager){
-        if (energy) {
-            energy = false;
+        if (energy && energyEnabled) {
+            energyEnabled = false;
             animator.Play("Base Layer.EnergyOff");
         } else if (celled){
             ShakePillar();
@@ -69,7 +71,10 @@ public class Pillar : MonoBehaviour
     
 
     public void SetModification(int mod){
-        if (mod == 1) energy = true;
+        if (mod == 1) {
+            energy = true;
+            energyEnabled = true;
+        }
         else if (mod == 2) celled = true;
     }
 
@@ -100,7 +105,6 @@ public class Pillar : MonoBehaviour
             for (int i = 0; i < rends.Length; i++){
                 rends[i].material = renderer.material;
             }
-            // Debug.Break();
         }
     }
 
@@ -140,6 +144,10 @@ public class Pillar : MonoBehaviour
             }
             animator.Play("Restart Layer.Restart");
             Invoke("RestartCelled", .5f);
+        }
+        if (energy && !energyEnabled){
+            animator.Play("Base Layer.EnergyOn");
+            energyEnabled = true;
         }
     }
 

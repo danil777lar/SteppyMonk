@@ -144,7 +144,7 @@ public class WalkManager : MonoBehaviour
         if (hitItog[0] && hitItog[1]){
             if (isPillar){
                 PushPillarId( pillar.StepOn(comboCounter, this) );
-                if (pillar.CheckEnergyBuff() && duration >= 0.3f) duration -= 0.2f;
+                if (pillar.CheckEnergyBuff() && duration >= 0.2f) duration -= 0.1f;
                 if (pillar.CheckCounter(pointCounter.GetId())) pointCounter.IncrementPoint();
             } else PushPillarId(-1);
             return true;

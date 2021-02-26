@@ -19,51 +19,63 @@ public class CheckPointGenerator : MonoBehaviour
 
     // Values
     private bool isNewPoint = true;
-    private int moduleLenght = 10;
-    private int difficulty;
-
+    private int moduleLenght = 20;
+    
     void Start()
     {
         text = GetComponentInChildren<Text>();
         GenerateMyself();
         if (startGenerate) GenerateNext();
-        difficulty = 10;//PlayerPrefs.GetInt("Difficulty");//FIXME
     }
 
     private void GenerateMyself(){
         // Pillars generate
         Vector3 startPoint = new Vector3(50.01f, -10.81f, 28.1f);
+        int difficulty = GetDifficulty();
         float workingSpace = 90f;
-        int pillareMax = 5;
+        int pillarMax = 5;
         int pillarMin = 2;
-        int stepMax = 8;
+        int stepMax = 6;
         int stepMin = 2;
 
         List<GameObject> pillarList = new List<GameObject>();
-        int currentPoint = 0;
+        int currentPoint = Random.Range(stepMin, stepMax);
         while (currentPoint < workingSpace){
-            currentPoint += Random.Range(stepMin, stepMax);
-            if (workingSpace - currentPoint > pillareMax){
-                int pillarLenght = Random.Range(pillarMin, pillareMax+1);
-                Pillar pillar = Resources.Load<Pillar>("Objects/Pillars/Simple/pillar_"+pillarLenght);
-                if (Random.Range(1, 11) < difficulty){
-                    if (Random.Range(1, 6) == 1) pillar.SetModification(1);
-                    else pillar.SetModification(2);
-                }
+            if (workingSpace - currentPoint > pillarMax){
 
+                // Load Pillar
+                int pillarMinOffset = 1;
+                if (Random.Range(1, 11) < difficulty) pillarMinOffset = 0;
+                int pillarLenght = Random.Range( pillarMin + pillarMinOffset, pillarMax + 1 );
+                Pillar pillar = Resources.Load<Pillar>( "Objects/Pillars/Simple/pillar_" + pillarLenght );
+
+                // Set Values
                 GameObject pillarObject = Instantiate(pillar.gameObject);
                 pillarList.Add(pillarObject);
                 pillarObject.transform.parent = pillarsRoot.transform;
                 pillarObject.transform.localScale = new Vector3(1f, 1f, 1f);
                 Vector3 position = new Vector3( startPoint.x - currentPoint, startPoint.y, startPoint.z );
                 pillarObject.transform.localPosition = position;
-                
-                currentPoint += pillarLenght;
-            } else break;
-        }
 
-        if (Random.Range(0, 100) < 50) pillarList[Random.Range(0, pillarList.Count)].GetComponent<Pillar>().SetModification(1);
+                // Modification
+                currentPoint += pillarLenght;
+                if (Random.Range(1, 11) < difficulty){
+                    int rand = Random.Range(1, 6);
+                    if (rand == 1) pillarObject.GetComponent<Pillar>().SetModification(1);
+                    else pillarObject.GetComponent<Pillar>().SetModification(2);
+                }
+            } else break;
+            currentPoint += Random.Range(stepMin, stepMax);
+        }
         pillarsRoot.GetComponent<PillarComboManager>().SetPillarList(pillarList);
+    }
+
+    private int GetDifficulty(){
+        int distance = PlayerPrefs.GetInt( "Distance_0" );
+        int difficulty = distance/100;
+        if (difficulty > 10) difficulty = 10;
+
+        return difficulty;
     }
 
     public bool GenerateNext(){
