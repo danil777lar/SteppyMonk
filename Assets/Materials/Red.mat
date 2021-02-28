@@ -122,7 +122,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_5DDA0432: {r: 0.6509804, g: 0.36862746, b: 0.27450982, a: 0}
+    - Color_5DDA0432: {r: 0.43529412, g: 0.25490198, b: 0.2627451, a: 0}
     - Color_E6E06023: {r: 0.4, g: 0.4, b: 0.4, a: 0}
     - Color_EB1218D3: {r: 0.8078432, g: 0.34509805, b: 0.30588236, a: 0}
     - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
