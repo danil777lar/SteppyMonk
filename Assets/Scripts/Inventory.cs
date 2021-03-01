@@ -25,22 +25,21 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         currentMask = PlayerPrefs.GetInt("Mask");
-        maskNum = Resources.LoadAll<Mask>("Objects/Masks/").Length;
+        maskNum = Resources.LoadAll<GameObject>("Objects/Masks/").Length;
         maskLoader.LoadMask(currentMask);
         UpdateUI();
     }
 
     private void UpdateUI(){
-        Mask mask = maskLoader.GetMask();
-        title.text = mask.title;
-        description.text = mask.description;
+        title.text = Assets.SimpleLocalization.LocalizationManager.Localize("Masks."+currentMask+".Title");
+        description.text = '"'+Assets.SimpleLocalization.LocalizationManager.Localize("Masks."+currentMask+".Description")+'"';
 
         if (CheckIdInInventory(currentMask)) okButton.interactable = true;
         else {
             okButton.interactable = false;
             description.text = "...";
 
-            Renderer[] renderers = mask.GetComponentsInChildren<Renderer>();
+            Renderer[] renderers = maskLoader.GetMask().GetComponentsInChildren<Renderer>();
             for (int i = 1; i < renderers.Length; i++){
                 renderers[i].material = blackBlur;
             }

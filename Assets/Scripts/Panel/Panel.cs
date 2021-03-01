@@ -7,7 +7,7 @@ public class Panel : MonoBehaviour
 {
     private RectTransform trans;
 
-    private void Start(){
+    protected void Start(){
         trans = GetComponent<RectTransform>();
     }
 

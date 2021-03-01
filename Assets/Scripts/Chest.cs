@@ -57,7 +57,7 @@ public class Chest : MonoBehaviour
         if (!choosed) animator.Play("Base Layer.ShowChest");
         clicable = true;
 
-        reward = Instantiate(Resources.LoadAll<Mask>("Objects/Masks/")[id].gameObject);
+        reward = Instantiate(Resources.LoadAll<GameObject>("Objects/Masks/")[id].gameObject);
         reward.transform.parent = GetComponentsInChildren<Transform>()[3];
         reward.transform.localPosition = new Vector3(0f, 0f, 0f);
         reward.transform.localScale = new Vector3(10f, 10f, 10f);

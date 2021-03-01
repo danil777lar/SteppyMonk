@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shop : MonoBehaviour
+public class Shop : MonoBehaviour, IAdCreator
 {
     public Button playButton;
     public Button adButton;
@@ -12,12 +12,15 @@ public class Shop : MonoBehaviour
 
     public Chest[] chests;
 
+    private RewardedAdGenerator ad;
+
     private bool firstTry = true;
 
     private int rewardId;
 
     void Start()
     {
+        ad = GetComponent<RewardedAdGenerator>();
         UpdateUI();
         ConnectChests();
     }
@@ -71,7 +74,7 @@ public class Shop : MonoBehaviour
     public void Play(){
         if (firstTry) MoneyManager.SpendMoney(100);
 
-        int rewardNum = Resources.LoadAll<Mask>("Objects/Masks/").Length;
+        int rewardNum = Resources.LoadAll<GameObject>("Objects/Masks/").Length;
         int[] ids = new int[chests.Length];
 
         for(int i = 0; i < chests.Length; i++){
@@ -146,9 +149,14 @@ public class Shop : MonoBehaviour
     }
 
     public void AdButtonClicked(){
-        //TODO - make ad
-        Play();  
+        ad.Show(this);
     }
+
+    public void RewAdClosed(){
+        Play();
+    }
+
+    public void IntAdClosed(){}
 
     public void SetReward(int maskId){
         rewardId = maskId;

@@ -45,7 +45,7 @@ public class WalkManager : MonoBehaviour
         HipsToCenter();
         StepAnimation();  
 
-        if (!EventSystem.current.IsPointerOverGameObject() && isWalkable){
+        if (GameStateManager.GetState() == 0 && isWalkable){
             if (Input.GetMouseButtonDown(0) && startTime == -1f) StartStep();
             if (Input.GetMouseButtonUp(0) && startTime != -1f) EndStep();
         }      

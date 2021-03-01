@@ -64,8 +64,9 @@ public class CheckPointGenerator : MonoBehaviour
                     if (rand == 1) pillarObject.GetComponent<Pillar>().SetModification(1);
                     else pillarObject.GetComponent<Pillar>().SetModification(2);
                 }
+
+                currentPoint += Random.Range(stepMin, stepMax);
             } else break;
-            currentPoint += Random.Range(stepMin, stepMax);
         }
         pillarsRoot.GetComponent<PillarComboManager>().SetPillarList(pillarList);
     }

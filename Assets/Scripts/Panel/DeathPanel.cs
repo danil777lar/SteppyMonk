@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeathPanel : Panel
+public class DeathPanel : Panel, IAdCreator
 {
     public GameObject player;
+
+    private InterstitialAdGenerator[] ad;
+
+    private bool firstAd;
+
+    private void Start(){
+        base.Start();
+        ad = GetComponentsInChildren<InterstitialAdGenerator>();
+    }
 
     public override void Close(){
         base.Close();
@@ -17,7 +26,15 @@ public class DeathPanel : Panel
         base.Open();
     }
 
-    public void Restart(){
+    public void RestartButtonClicked(){
+        if (Random.Range(0, 3) != 0) Restart();
+        else {
+            firstAd = true;
+            ad[0].Show(this);
+        }
+    }
+
+    private void Restart(){
         float x = player.GetComponentInChildren<WalkManager>().GetSpawn();
         Destroy(player);
         player = Instantiate(Resources.Load<GameObject>("Objects/PlayerDir"));
@@ -40,5 +57,14 @@ public class DeathPanel : Panel
         texts[1].text = "best\n"+maxPoints;
         texts[2].text = ""+PlayerPrefs.GetInt("Money");
 
+    }
+
+    public void RewAdClosed(){}
+
+    public void IntAdClosed(){
+        if (firstAd){
+            firstAd = false;
+            ad[1].Show(this);
+        } else Restart();
     }
 }
